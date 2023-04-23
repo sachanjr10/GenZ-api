@@ -12,8 +12,7 @@ const orderRoute = require("./routes/order");
 const stripeRoute = require("./routes/stripe");
 
 
-//imp to deploy
-const path = require('path')
+
 
 //cors
 const cors = require("cors");
@@ -38,12 +37,7 @@ app.use("/api/carts", cartRoute);
 app.use("/api/orders", orderRoute);
 app.use("/api/checkout", stripeRoute);
 
-//imp for deploy
-//static files
-app.use(express.static(path.join(__dirname, '../client/build')));
-app.get('*', function(req, res){
-    res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
+
 
 app.listen(process.env.PORT || 5000, ()=>{
     console.log("Backend server is runing!");
